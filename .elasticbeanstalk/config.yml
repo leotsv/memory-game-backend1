@@ -1,15 +1,11 @@
 branch-defaults:
   main:
     environment: memory-game-env
-environment-defaults:
-  memory-game-env:
-    branch: null
-    repository: null
 global:
   application_name: memory-game-backend1
   branch: null
-  default_ec2_keyname: null
-  default_platform: Corretto 17 running on 64bit Amazon Linux 2023
+  default_ec2_keyname: memory-game-key
+  default_platform: Corretto 17 running on 64bit Amazon Linux 2
   default_region: us-east-1
   include_git_submodules: true
   instance_profile: null
