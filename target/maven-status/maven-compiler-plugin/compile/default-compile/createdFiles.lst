@@ -1,0 +1,4 @@
+com\memorygame\controller\ScoreController.class
+com\memorygame\MemoryGameApplication.class
+com\memorygame\model\Score.class
+com\memorygame\repository\ScoreRepository.class
