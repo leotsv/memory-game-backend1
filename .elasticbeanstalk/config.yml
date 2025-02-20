@@ -1,6 +1,6 @@
 branch-defaults:
   main:
-    environment: memory-game-env
+    environment: null
 global:
   application_name: memory-game-backend1
   branch: null
