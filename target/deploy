@@ -1,0 +1,5 @@
+git add .
+git commit -m "commit before deploy on `time` "
+git push -u origin main
+echo memory-game-env | eb terminate memory-game-env
+eb create memory-game-env --single
