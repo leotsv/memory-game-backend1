@@ -1,0 +1,53 @@
+option_settings:
+  # Environment variables
+  aws:elasticbeanstalk:application:environment:
+    SPRING_PROFILES_ACTIVE: prod
+    SERVER_PORT: 5000
+    JAVA_TOOL_OPTIONS: "-Xms256m -Xmx512m"
+  
+  # Instance configuration
+  aws:autoscaling:launchconfiguration:
+    InstanceType: t2.micro 
+
+files:
+  "/etc/systemd/system/web.service":
+    mode: "000644"
+    owner: root
+    group: root
+    content: |
+      [Unit]
+      Description=Memory Game Backend
+      After=network.target
+
+      [Service]
+      Type=simple
+      User=webapp
+      Group=webapp
+      WorkingDirectory=/var/app/current
+      ExecStart=/usr/bin/java -jar memory-game-backend1-0.0.1-SNAPSHOT.jar
+      SuccessExitStatus=143
+      TimeoutStopSec=10
+      Restart=on-failure
+      RestartSec=5
+
+      [Install]
+      WantedBy=multi-user.target
+
+container_commands:
+  01_make_dir:
+    command: mkdir -p /var/app/current/
+  02_copy_jar:
+    command: cp /var/app/staging/target/*.jar /var/app/current/
+  03_set_permissions:
+    command: chmod +x /var/app/current/*.jar 
+  04_set_permissions:    
+    command: chown webapp:webapp /var/app/current/*.jar   
+  05_install_polkit:
+    command: yum install -y polkit
+  06_enable_service:
+    command: systemctl enable web.service
+  07_start_service: 
+    command: /bin/systemctl enable web.service
+  08_start_service:       
+    command: /bin/systemctl restart web.service
+    ignoreErrors: true
