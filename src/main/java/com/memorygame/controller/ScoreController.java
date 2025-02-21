@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
+@RequestMapping("/api")  // Base path for all endpoints
 public class ScoreController {
     
     private static final Logger logger = LoggerFactory.getLogger(ScoreController.class);
@@ -24,7 +25,7 @@ public class ScoreController {
         return "Memory Game Backend is running!";
     }
 
-    @GetMapping("/api/scores")
+    @GetMapping("/scores")  // Changed from /api/scores since we have base path
     public List<Score> getTopScores() {
         logger.info("Fetching top scores");
         try {
@@ -37,7 +38,7 @@ public class ScoreController {
         }
     }
 
-    @PostMapping("/api/scores")
+    @PostMapping("/scores")  // Changed from /api/scores since we have base path
     public Score saveScore(@RequestBody Score score) {
         logger.info("Saving new score for player: {}", score.getPlayerName());
         try {
