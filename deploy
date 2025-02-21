@@ -1,3 +1,4 @@
+mvn clean package
 git add .
 git commit -m "commit before deploy on `date` "
 git push -u origin main

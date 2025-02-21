@@ -1,4 +1,6 @@
+com\memorygame\config\SecurityConfig.class
 com\memorygame\controller\ScoreController.class
-com\memorygame\MemoryGameApplication.class
+com\memorygame\controller\ErrorController.class
 com\memorygame\model\Score.class
+com\memorygame\MemoryGameApplication.class
 com\memorygame\repository\ScoreRepository.class
